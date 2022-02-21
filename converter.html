@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Worldle HTML Converter
+        </title>
+        <script>
+            function convertTextToHtml(){
+                text = document.getElementById("worldle-text").value
+                lineBreakedText = text.split(/\r\n|\n/);
+                //console.log(lineBreakedText);
+                resultText = "<div>\n";
+                for(i = 0; i < lineBreakedText.length - 1; i++) {
+                    resultText += lineBreakedText[i] + " <br/>\n";
+                }
+                resultText += "<a href=\"" + lineBreakedText[i] + "\"> " + lineBreakedText[i] + "</a> <br/>\n";
+                resultText += "<details>\n<summary>\nSpoiler Image of Guesses\n</summary>\n<img src=src/>\n</details>\n</div>";
+        
+                console.log(resultText);
+                document.getElementById("result-text").innerText = resultText;
+            }
+        </script>
+    </head>
+    <body>
+        <textarea id="worldle-text"></textarea>
+        <button onclick="convertTextToHtml()">convert</button>
+        <div id="result-text"></div>
+    </body>
+</html>
