@@ -8,16 +8,30 @@
             function convertTextToHtml(){
                 text = document.getElementById("worldle-text").value
                 lineBreakedText = text.split(/\r\n|\n/);
-                //console.log(lineBreakedText);
+                console.log(lineBreakedText);
                 resultText = "<div>\n";
                 for(i = 0; i < lineBreakedText.length - 1; i++) {
-                    resultText += lineBreakedText[i] + " <br/>\n";
+                    resultText += "                " + lineBreakedText[i] + " <br/>\n";
                 }
-                resultText += "<a href=\"" + lineBreakedText[i] + "\"> " + lineBreakedText[i] + "</a> <br/>\n";
-                resultText += "<details>\n<summary>\nSpoiler Image of Guesses\n</summary>\n<img src=\"pictures\/\"/>\n</details>\n</div>";
+                resultText += "                " + "<a href=\"" + lineBreakedText[i] + "\"> " + lineBreakedText[i] + "</a> <br/>\n";
+                resultText += "                <details>\n";
+                resultText += "                    <summary>\n";
+                resultText += "                        Spoiler Image of Guesses\n";
+                resultText += "                    </summary>\n";
+                resultText += "                    <img src=\"pictures\/202X-XX-XX.png\"/>\n";
+                resultText += "                </details>\n";
+                resultText += "            </div>";
         
                 console.log(resultText);
-                document.getElementById("result-text").innerText = resultText;
+                document.getElementById("result-code").innerText = resultText;
+            }
+            
+            function addTabs(numTabs) {
+                result = "";
+                for(i = 0; i < numTabs; i++) {
+                    result += "    ";
+                }
+                return result;
             }
         </script>
     </head>
@@ -25,5 +39,9 @@
         <textarea id="worldle-text"></textarea>
         <button onclick="convertTextToHtml()">convert</button>
         <div id="result-text"></div>
+        <pre>
+            <code id="result-code">
+            </code>
+        </pre>
     </body>
 </html>
