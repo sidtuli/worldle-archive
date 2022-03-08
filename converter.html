@@ -4,12 +4,22 @@
         <title>
             Worldle HTML Converter
         </title>
+        <link 
+            rel="icon" 
+            href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>">
         <script>
             function convertTextToHtml(){
+                // Split Wordle share result
                 text = document.getElementById("worldle-text").value
                 lineBreakedText = text.split(/\r\n|\n/);
-                console.log(lineBreakedText);
-                resultText = "<div>\n";
+                //console.log(lineBreakedText);
+                
+                // Grab Daily Worldle Number
+                result_num = text.match(/#([0-9]+)/)[0].replace("#","");
+                //console.log(result_num);
+                
+                // Create html output 
+                resultText = "<div id=\"result-"+ result_num + "\">\n";
                 for(i = 0; i < lineBreakedText.length - 1; i++) {
                     resultText += "        " + lineBreakedText[i] + " <br/>\n";
                 }
@@ -21,17 +31,10 @@
                 resultText += "            <img src=\"pictures\/202X-XX-XX.png\"/>\n";
                 resultText += "        </details>\n";
                 resultText += "    </div>";
-        
-                console.log(resultText);
+                
+                // Write out new html section
+                //console.log(resultText);
                 document.getElementById("result-code").innerText = resultText;
-            }
-            
-            function addTabs(numTabs) {
-                result = "";
-                for(i = 0; i < numTabs; i++) {
-                    result += "    ";
-                }
-                return result;
             }
         </script>
     </head>
