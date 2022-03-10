@@ -12,11 +12,16 @@
                 // Split Wordle share result
                 text = document.getElementById("worldle-text").value
                 lineBreakedText = text.split(/\r\n|\n/);
-                //console.log(lineBreakedText);
+                
+                // Grab date values
+                // Reference - https://stackoverflow.com/questions/2013255/how-to-get-year-month-day-from-a-date-object
+                current_date = new Date();
+                day = formatDate(current_date.getDate());
+                month = formatDate(current_date.getMonth() + 1);
+                year = current_date.getFullYear();
                 
                 // Grab Daily Worldle Number
                 result_num = text.match(/#([0-9]+)/)[0].replace("#","");
-                //console.log(result_num);
                 
                 // Create html output 
                 resultText = "<div id=\"result-"+ result_num + "\">\n";
@@ -28,13 +33,20 @@
                 resultText += "            <summary>\n";
                 resultText += "                Spoiler Image of Guesses\n";
                 resultText += "            </summary>\n";
-                resultText += "            <img src=\"pictures\/202X-XX-XX.png\"/>\n";
+                resultText += "            <img src=\"pictures\/"+year+"-"+month+"-"+day+".png\"/>\n";
                 resultText += "        </details>\n";
                 resultText += "    </div>";
                 
                 // Write out new html section
-                //console.log(resultText);
                 document.getElementById("result-code").innerText = resultText;
+            }
+            
+            /**
+            This function will format a given date number (month or day) with a leading zero as needed
+            Reference - https://stackoverflow.com/questions/3605214/javascript-add-leading-zeroes-to-date
+            */
+            function formatDate(dateString) {
+                return ("0" + dateString).slice(-2);
             }
         </script>
     </head>
