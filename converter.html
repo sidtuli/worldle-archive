@@ -48,11 +48,18 @@
             function formatDate(dateString) {
                 return ("0" + dateString).slice(-2);
             }
+            
+            // https://www.w3schools.com/howto/howto_js_copy_clipboard.asp
+            function copyText() {
+                var copyText = document.getElementById("result-code");
+                navigator.clipboard.writeText(copyText.innerText);
+            }
         </script>
     </head>
     <body>
         <textarea id="worldle-text"></textarea>
         <button onclick="convertTextToHtml()">convert</button>
         <pre><code id="result-code"></code></pre>
+        <button onclick="copyText()">copy</button>
     </body>
 </html>
