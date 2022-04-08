@@ -24,7 +24,7 @@
                 result_num = text.match(/#([0-9]+)/)[0].replace("#","");
                 
                 // Create html output 
-                resultText = "<div id=\"result-"+ result_num + "\">\n";
+                resultText = "\n    <div id=\"result-"+ result_num + "\">\n";
                 for(i = 0; i < lineBreakedText.length - 1; i++) {
                     resultText += "        " + lineBreakedText[i] + " <br/>\n";
                 }
