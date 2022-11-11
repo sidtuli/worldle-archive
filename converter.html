@@ -45,6 +45,8 @@
                 
                 // Write out new html section
                 document.getElementById("result-code").innerText = resultText;
+                
+                copyText();
             }
             
             /**
@@ -64,8 +66,7 @@
     </head>
     <body>
         <textarea id="worldle-text"></textarea>
-        <button onclick="convertTextToHtml()">convert</button>
-        <button onclick="copyText()">copy</button>
+        <button onclick="convertTextToHtml()">convert & copy</button>
         <pre><code id="result-code"></code></pre>
     </body>
 </html>
