@@ -18,6 +18,8 @@
                 // Split Wordle share result
                 text = document.getElementById("worldle-text").value
                 lineBreakedText = text.split(/\r\n|\n/);
+                // Removing empty lines update from here - https://stackoverflow.com/questions/35476948/remove-empty-or-whitespace-strings-from-array-javascript
+                lineBreakedText = lineBreakedText.filter(entry => entry.trim() != '');
                 
                 // Grab date values
                 // Reference - https://stackoverflow.com/questions/2013255/how-to-get-year-month-day-from-a-date-object
