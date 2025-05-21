@@ -34,7 +34,12 @@
                 // Create html output 
                 resultText = "\n    <div id=\"result-"+ result_num + "\">\n";
                 for(i = 0; i < lineBreakedText.length - 1; i++) {
-                    resultText += "        " + lineBreakedText[i] + " <br/>\n";
+                    if (lineBreakedText[i].includes("Streak")) {
+                        resultText += "        <!--" + lineBreakedText[i] + " <br/> -->\n";
+                    } else {
+                        resultText += "        " + lineBreakedText[i] + " <br/>\n";
+                    }
+                    
                 }
                 resultText += "        " + "<a href=\"" + lineBreakedText[i] + "\"> " + lineBreakedText[i] + "</a> <br/>\n";
                 resultText += "        <details>\n";
