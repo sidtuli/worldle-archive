@@ -18,9 +18,21 @@
         img{
             max-width: 50%;
         }
-        @media (max-width : 800px) {
+        @media (max-width : 360px) {
             img {
                 max-width: 100%;
+            }
+            div {
+                border-top: 2px solid black;
+                text-align: center;
+                max-width: 100%;
+                margin-left: 0%;
+                margin-right: 0%;
+            }
+        }
+        @media (min-width : 360px) and (max-width : 800px) {
+            img {
+                max-width: 80%;
             }
             div {
                 border-top: 2px solid black;
@@ -32,7 +44,7 @@
         }
         @media (min-width : 800px) and (max-width : 1024px) {
             img {
-                max-width: 75%;
+                max-width: 60%;
             }
             div {
                 border-top: 2px solid black;
