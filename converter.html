@@ -34,7 +34,7 @@
                 // Create html output 
                 resultText = "\n    <div id=\"result-"+ result_num + "\">\n";
                 for(i = 0; i < lineBreakedText.length - 1; i++) {
-                    if (lineBreakedText[i].includes("Streak")) {
+                    if (lineBreakedText[i].includes("Streak") || lineBreakedText[i].includes("Worldle has a new")) {
                         resultText += "        <!--" + lineBreakedText[i] + " <br/> -->\n";
                     } else {
                         resultText += "        " + lineBreakedText[i] + " <br/>\n";
