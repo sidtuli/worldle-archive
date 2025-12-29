@@ -21,12 +21,7 @@
                 // Removing empty lines update from here - https://stackoverflow.com/questions/35476948/remove-empty-or-whitespace-strings-from-array-javascript
                 lineBreakedText = lineBreakedText.filter(entry => entry.trim() != '');
                 
-                // Grab date values
-                // Reference - https://stackoverflow.com/questions/2013255/how-to-get-year-month-day-from-a-date-object
-                current_date = new Date();
-                day = formatDate(current_date.getDate());
-                month = formatDate(current_date.getMonth() + 1);
-                year = current_date.getFullYear();
+                date_string = generateDateString(text)
                 
                 // Grab Daily Worldle Number
                 result_num = text.match(/#([0-9]+)/)[0].replace("#","");
@@ -46,7 +41,7 @@
                 resultText += "            <summary>\n";
                 resultText += "                Spoiler Image of Guesses\n";
                 resultText += "            </summary>\n";
-                resultText += "            <img src=\"pictures\/"+year+"-"+month+"-"+day+".png\"/>\n";
+                resultText += "            <img src=\"pictures\/"+date_string+".png\"/>\n";
                 resultText += "        </details>\n";
                 resultText += "    </div>";
                 
@@ -63,6 +58,31 @@
             function formatDate(dateString) {
                 return ("0" + dateString).slice(-2);
             }
+            
+            function generateDateString(text) {
+                day = null
+                month = null
+                year = null
+                
+                const result_date_regexp = new RegExp("([0-9]{2})\.([0-9]{2})\.([0-9]{4})");
+                regex_matches = text.match(result_date_regexp)
+                
+                day = regex_matches[1]
+                month = regex_matches[2]
+                year = regex_matches[3]
+                
+                if (day == null || month == null || year == null) {
+                    // Grab today's date values if there's nothing found from input text
+                    // Reference - https://stackoverflow.com/questions/2013255/how-to-get-year-month-day-from-a-date-object
+                    current_date = new Date();
+                    day = formatDate(current_date.getDate());
+                    month = formatDate(current_date.getMonth() + 1);
+                    year = current_date.getFullYear();
+                }
+                
+                return year+"-"+month+"-"+day
+            }
+            
             
             // https://www.w3schools.com/howto/howto_js_copy_clipboard.asp
             function copyText() {
